@@ -6,7 +6,7 @@ navigator.webkitPersistentStorage.requestQuota(1024 * 1024, function() {
 function SaveDatFileBro(localstorage) {
   localstorage.root.getFile('test1.dae', {create: true}, function(DatFile) {
     DatFile.createWriter(function(DatContent) {
-      const blob = new Blob(['test'], {type: 'application/vnd.oipf.dae.xhtml+xml'});
+      const blob = new Blob(['test'], {type: 'text/plain;charset=utf-8'});
       DatContent.write(blob);
       const link = document.createElement('a');
       link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/test1.dae';
