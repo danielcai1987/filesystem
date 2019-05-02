@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <script>
+window.download = { data: '<xml>hahahaha</xml>', filename: 'ttt.dae'};
 navigator.webkitPersistentStorage.requestQuota(1024 * 1024, function() {
   window.webkitRequestFileSystem(window.TEMPORARY , 1024 * 1024, SaveDatFileBro);
 });
 function SaveDatFileBro(localstorage) {
-  localstorage.root.getFile('test1.dae', {create: true}, function(DatFile) {
+  const filename = window.download.filename;
+  localstorage.root.getFile(filename, {create: true}, function(DatFile) {
     DatFile.createWriter(function(DatContent) {
-      const blob = new Blob(['test'], {type: 'text/plain;charset=utf-8'});
+      // @ts-ignore
+      const blob = new Blob([window.download.data], {type: 'text/plain;charset=utf-8'});
       DatContent.write(blob);
       const link = document.createElement('a');
-      link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/test1.dae';
-      link.download = 'test1.dae';
+      link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/' + filename;
+      link.download = filename;
       link.click();
     });
   });
