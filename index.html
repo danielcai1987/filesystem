@@ -1,2 +1,19 @@
 <!DOCTYPE html>
+<script>
+navigator.webkitPersistentStorage.requestQuota(1024 * 1024, function() {
+  window.webkitRequestFileSystem(window.TEMPORARY , 1024 * 1024, SaveDatFileBro);
+});
+function SaveDatFileBro(localstorage) {
+  localstorage.root.getFile('test1.dae', {create: true}, function(DatFile) {
+    DatFile.createWriter(function(DatContent) {
+      const blob = new Blob(['test'], {type: 'application/vnd.oipf.dae.xhtml+xml'});
+      DatContent.write(blob);
+      const link = document.createElement('a');
+      link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/test1.dae';
+      link.download = 'download';
+      link.click();
+    });
+  });
+}
+</script>
 <h1>Hello</h1>
