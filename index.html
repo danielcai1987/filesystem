@@ -10,7 +10,7 @@ function SaveDatFileBro(localstorage) {
       DatContent.write(blob);
       const link = document.createElement('a');
       link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/test1.dae';
-      link.download = 'download';
+      link.download = 'test1.dae';
       link.click();
     });
   });
