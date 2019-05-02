@@ -9,7 +9,7 @@ function SaveDatFileBro(localstorage) {
   localstorage.root.getFile(filename, {create: true}, function(DatFile) {
     DatFile.createWriter(function(DatContent) {
       // @ts-ignore
-      const blob = new Blob([window.download.data], {type: 'model/vnd.collada+xml;charset=utf-8'});
+      const blob = new Blob([window.download.data], {type: 'text/plain;charset=utf-8'});
       DatContent.write(blob);
       const link = document.createElement('a');
       link.href = 'filesystem:' + window.location.protocol + '//' + window.location.hostname + '/temporary/' + filename;
