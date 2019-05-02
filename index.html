@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <script>
 window.download = { data: 'hahahaha', filename: 'ttt.dae'};
-navigator.webkitPersistentStorage.requestQuota(1024 * 1024, function() {
-  window.webkitRequestFileSystem(window.TEMPORARY , 1024 * 1024, SaveDatFileBro);
+navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 1024, function() {
+  window.webkitRequestFileSystem(window.TEMPORARY , 1024 * 1024 * 1024, SaveDatFileBro);
 });
 function SaveDatFileBro(localstorage) {
   const filename = window.download.filename;
@@ -19,4 +19,4 @@ function SaveDatFileBro(localstorage) {
   });
 }
 </script>
-<h1>Hello</h1>
+<h1>Hello2</h1>
